@@ -51,8 +51,8 @@ public class EscapeRoom
     // size of move
     int m = 60; 
     // individual player moves
-    int px = 0;
-    int py = 0; 
+    int px = 15;
+    int py = 15; 
     
     int score = 0;
 
@@ -69,50 +69,50 @@ public class EscapeRoom
       if (input.equals("right") || input.equals("r"))
       {
         score -= game.movePlayer(60, 0);
-        if (!game.isTrap(px + 1, py))
-          px += 1;
+        if (!game.isTrap(px + m, py))
+          px += m;
       }
       else if (input.equals("left") || input.equals("l"))
       {
         score -= game.movePlayer(-60, 0);
-        if (!game.isTrap(px - 1, py))
-          px -= 1;
+        if (!game.isTrap(px - m, py))
+          px -= m;
       }
       else if (input.equals("up") || input.equals("u"))
       {
         score -= game.movePlayer(0, -60);
-        if (!game.isTrap(px, py + 1))
-          py += 1;
+        if (!game.isTrap(px, py + 60))
+          py += 60;
       }
       else if (input.equals("down") || input.equals("d"))
       {
         score -= game.movePlayer(0, 60);
-        if (!game.isTrap(px, py - 1))
-          py -= 1;
+        if (!game.isTrap(px, py - 60))
+          py -= 60;
       }
       else if (input.equals("jump") || input.equals("jumpup") || input.equals("ju"))
       {
         score -= game.movePlayer(0, 120);
-        if (!game.isTrap(px, py + 2))
-          py += 2;
+        if (!game.isTrap(px, py + 120))
+          py += 120;
       }
       else if (input.equals("jumpdown") || input.equals("jd"))
       {
         score -= game.movePlayer(0, -120);
-        if (!game.isTrap(px, py - 2))
-          py -= 2;
+        if (!game.isTrap(px, py - 120))
+          py -= 120;
       }
       else if (input.equals("jumpright") || input.equals("jr"))
       {
         score -= game.movePlayer(120, 0);
-        if (!game.isTrap(px, py + 2))
-          py += 2;
+        if (!game.isTrap(px + 120, py))
+          px += 120;
       }
       else if (input.equals("jumpleft") || input.equals("jl"))
       {
         score -= game.movePlayer(-120, 0);
-        if (!game.isTrap(px - 2, py))
-          px -= 2;
+        if (!game.isTrap(px - 120, py))
+          px -= 120;
       }
       else if (input.equals("pickup") || input.equals("p"))
       {
@@ -132,7 +132,7 @@ public class EscapeRoom
         for (String x : validCommands)
           System.out.print(x + ", ");
       }
-      if (px >= game.getWidth())
+     if (px > 7*m)
       {
         play = false;
       }
